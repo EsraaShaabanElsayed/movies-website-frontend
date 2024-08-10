@@ -7,6 +7,9 @@ pipeline {
         SSH_CREDENTIALS = credentials('jenkins-key')
         APP_DIR = '/var/www/html/'
     }
+    tools{
+        nodejs "node"
+    }
 
     stages {
         stage('Checkout') {
@@ -21,7 +24,7 @@ pipeline {
             steps {
                 sh 'rm -rf node_modules'
                 sh 'npm install'
-                sh 'npm audit fix'
+                
             }
         }
         stage('Build') {
