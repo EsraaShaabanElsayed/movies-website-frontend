@@ -76,12 +76,5 @@ To set up this project locally, follow these steps:
 ![Screenshot from 2024-08-11 02-04-54](https://github.com/user-attachments/assets/e1f93796-ead9-4ced-b789-4d29428fc6db)
 
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request or open an Issue if you find any bugs or have suggestions for improvements.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
