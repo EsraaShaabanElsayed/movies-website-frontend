@@ -6,7 +6,11 @@ pipeline {
         SSH_USER = 'esraa'
         SSH_CREDENTIALS = credentials('jenkins-key')
         APP_DIR = '/var/www/html/'
-        
+        NODEJS_TOOL = 'NodeJS' // Ensure this matches the NodeJS installation name in Jenkins
+    }
+
+    tools {
+        nodejs "${NODEJS_TOOL}" // Use Node.js version managed by the NodeJS plugin
     }
 
     stages {
@@ -18,19 +22,11 @@ pipeline {
                 )
             }
         }
-       
-        stage('Install Dependencies') {
+        stage('Clean and Install Dependencies') {
             steps {
-                script {
-                    // Check for package-lock.json or yarn.lock
-                    if (fileExists('package-lock.json')) {
-                        sh 'npm install'
-                    } else if (fileExists('yarn.lock')) {
-                        sh 'yarn install'
-                    } else {
-                        echo 'No package-lock.json or yarn.lock found, skipping dependency installation.'
-                    }
-                }
+                sh 'rm -rf node_modules'
+                sh 'npm install'
+                sh 'npm audit fix'
             }
         }
         stage('Build') {
