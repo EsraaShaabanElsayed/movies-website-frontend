@@ -23,7 +23,7 @@ pipeline {
                 script {
                     // Ensure nvm is installed and sourced
                     sh '''
-                    export NVM_DIR="$HOME/.nvm"
+                    export NVM_DIR="/var/lib/jenkins/.nvm"
                     if [ -s "$NVM_DIR/nvm.sh" ]; then
                         . "$NVM_DIR/nvm.sh"
                         nvm install $NODE_VERSION
