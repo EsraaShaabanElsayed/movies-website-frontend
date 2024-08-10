@@ -6,6 +6,7 @@ pipeline {
         SSH_USER = 'esraa'
         SSH_CREDENTIALS = credentials('jenkins-key')
         APP_DIR = '/var/www/html/'
+        NODE_VERSION = '18'
     }
 
     stages {
@@ -17,7 +18,15 @@ pipeline {
                 )
             }
         }
-
+        stage('Setup') {
+            steps {
+                script {
+                    // Install Node.js using nvm
+                    sh 'nvm install $NODE_VERSION'
+                    sh 'nvm use $NODE_VERSION'
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 script {
