@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import "../../css/ManageMovies.css";
 import { Link } from "react-router-dom";
-import Alert from "react-bootstrap/Alert";
+
 import axios from "axios";
 import { getAuthUser } from "../../helper/Storage";
 
@@ -20,7 +20,7 @@ const ManageMovies = () => {
     axios
       .get("http://localhost:4000/movies")
       .then((resp) => {
-        setMovies({ ...movies, results: resp.data, loading: false, err: null });
+        setMovies({ ...movies, data: resp.data, loading: false, err: null });
       })
       .catch((err) => {
         setMovies({
@@ -29,8 +29,8 @@ const ManageMovies = () => {
           err: " something went wrong, please try again later ! ",
         });
       });
-  }, [movies.reload]);
-
+  }, [movies]);
+  
   const deleteMovie = (id) => {
     axios
       .delete("http://localhost:4000/movies/" + id, {

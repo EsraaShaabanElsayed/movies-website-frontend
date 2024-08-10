@@ -57,11 +57,15 @@ const UpdateMovie = () => {
   };
 
   useEffect(() => {
+    setMovie({ ...movie, loading: true });
     axios
       .get("http://localhost:4000/movies/" + id)
       .then((resp) => {
         setMovie({
           ...movie,
+          loading: false,
+          success: "Movie loaded successfully!",
+          err: null,
           name: resp.data.name,
           description: resp.data.description,
           image_url: resp.data.image_url,
@@ -72,10 +76,11 @@ const UpdateMovie = () => {
           ...movie,
           loading: false,
           success: null,
-          err: "Something went wrong, please try again later !",
+          err: "Something went wrong, please try again later!",
         });
       });
-  }, [movie.reload]);
+  }, [id, movie, movie.reload]);
+  
 
   return (
     <div className="login-container">

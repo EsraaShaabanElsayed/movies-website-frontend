@@ -38,7 +38,8 @@ const MovieDetails = () => {
           err: " something went wrong, please try again later ! ",
         });
       });
-  }, [movie.reload]);
+  }, [id, movie, movie.reload]);
+  
 
   const sendReview = (e) => {
     e.preventDefault();

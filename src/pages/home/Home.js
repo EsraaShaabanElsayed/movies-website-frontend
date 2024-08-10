@@ -18,14 +18,9 @@ const Home = () => {
   useEffect(() => {
     setMovies({ ...movies, loading: true });
     axios
-      .get("http://localhost:4000/movies", {
-        params: {
-          search: search,
-        },
-      })
+      .get("http://localhost:4000/movies")
       .then((resp) => {
-        console.log(resp);
-        setMovies({ ...movies, results: resp.data, loading: false, err: null });
+        setMovies({ ...movies, data: resp.data, loading: false, err: null });
       })
       .catch((err) => {
         setMovies({
@@ -34,8 +29,8 @@ const Home = () => {
           err: " something went wrong, please try again later ! ",
         });
       });
-  }, [movies.reload]);
-
+  }, [movies, search]);
+  
   const searchMovies = (e) => {
     e.preventDefault();
     setMovies({ ...movies, reload: movies.reload + 1 });
