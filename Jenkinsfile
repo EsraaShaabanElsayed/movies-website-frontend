@@ -6,11 +6,6 @@ pipeline {
         SSH_USER = 'esraa'
         SSH_CREDENTIALS = credentials('jenkins-key')
         APP_DIR = '/var/www/html/'
-        NODEJS_TOOL = 'NodeJS' // Ensure this matches the NodeJS installation name in Jenkins
-    }
-
-    tools {
-        nodejs "${NODEJS_TOOL}" // Use Node.js version managed by the NodeJS plugin
     }
 
     stages {
