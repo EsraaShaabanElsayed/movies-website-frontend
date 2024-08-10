@@ -71,7 +71,7 @@ To set up this project locally, follow these steps:
    ```
    The application will be available at `http://localhost:3000`.
 
-## Screenshots
+## Screenshot
 
 ![Screenshot from 2024-08-11 02-04-54](https://github.com/user-attachments/assets/e1f93796-ead9-4ced-b789-4d29428fc6db)
 
