@@ -4,7 +4,7 @@ pipeline {
     environment {
         SSH_HOST = '172.16.62.133'
         SSH_USER = 'esraa'
-        SSH_CREDENTIALS = credentials('jenkins-key')
+       
         APP_DIR = '/var/www/html/'
     }
     tools{
@@ -35,8 +35,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sshagent(credentials: [SSH_CREDENTIALS]) {
-                        sh "scp -r build/* ${SSH_USER}@${SSH_HOST}:${APP_DIR}"
+                    sshagent(['jenkins-key']) {
+                        sh "scp -r build/* esraa@172.16.62.133:${APP_DIR}"
                     }
                 }
             }
