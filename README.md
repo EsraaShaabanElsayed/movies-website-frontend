@@ -2,7 +2,7 @@
 
 # Movies Website Frontend
 
-This project is the frontend of a Movies Website, developed using React and deployed using Jenkins with Nginx on a virtual machine. The primary goal of this project is to demonstrate proficiency in setting up continuous integration and continuous deployment (CI/CD) pipelines using Jenkins, while effectively deploying a React application on an Nginx web server.
+This project is the front end of a movie website, developed using React and deployed using Jenkins with Nginx on a virtual machine. The primary goal of this project is to demonstrate proficiency in setting up continuous integration and continuous deployment (CI/CD) pipelines using Jenkins, while effectively deploying a React application on an Nginx web server.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ This project is the frontend of a Movies Website, developed using React and depl
 
 ## Project Overview
 
-The Movies Website Frontend is a responsive web application built with React. It provides users with an interactive interface to browse and search for movies. This project showcases my ability to automate the deployment process of a frontend application using Jenkins, ensuring smooth and reliable updates to the live environment.
+The Movies Website Frontend is a responsive web application built with React. It provides users with an interactive interface to browse and search for movies. This project showcases the automation of  the deployment process of a front-end application using Jenkins, ensuring smooth and reliable updates to the live environment.
 
 ## Technologies Used
 
@@ -43,7 +43,7 @@ The deployment pipeline for this project is fully automated using Jenkins. The p
 
 ## Deployment Process
 
-The deployment process leverages Jenkins for automating the build and deployment of the React application:
+The deployment process leverages Jenkins to automate the build and deployment of the React application:
 
 1. **Configure Jenkins**: A Jenkins job is configured with the necessary credentials and environment settings to access the virtual machine.
 2. **Build and Deploy**: The Jenkins pipeline automatically builds the React app and deploys it to the virtual machine where Nginx is configured to serve it.
