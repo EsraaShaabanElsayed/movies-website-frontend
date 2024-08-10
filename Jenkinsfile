@@ -21,30 +21,40 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    // Install Node.js using nvm
-                    sh 'nvm install $NODE_VERSION'
-                    sh 'nvm use $NODE_VERSION'
+                    // Ensure nvm is installed and sourced
+                    sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    if [ -s "$NVM_DIR/nvm.sh" ]; then
+                        . "$NVM_DIR/nvm.sh"
+                        nvm install $NODE_VERSION
+                        nvm use $NODE_VERSION
+                    else
+                        echo "nvm is not installed."
+                        exit 1
+                    fi
+                    '''
                 }
             }
         }
         stage('Install Dependencies') {
             steps {
                 script {
+                    // Check for package-lock.json or yarn.lock
                     if (fileExists('package-lock.json')) {
                         sh 'npm install'
                     } else if (fileExists('yarn.lock')) {
                         sh 'yarn install'
+                    } else {
+                        echo 'No package-lock.json or yarn.lock found, skipping dependency installation.'
                     }
                 }
             }
         }
-
         stage('Build') {
             steps {
                 sh 'npm run build'
             }
         }
-
         stage('Deploy') {
             steps {
                 script {
